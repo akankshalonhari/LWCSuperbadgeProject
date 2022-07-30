@@ -40,11 +40,13 @@ export default class SimilarBoats extends NavigationMixin(LightningElement) {
   }
   
   // Navigate to record page
-  openBoatDetailPage(event) { 
+  openBoatDetailPage(event) {
+    this.currentBoat = event.detail.boatId; 
     this[NavigationMixin.Navigate]({
         type:'standard__recordPage',
-        attributes:{
-            recordId: this.boatId,
+        attributes: {
+            recordId: this.currentBoat,
+            objectApiName: 'Boat__c',
             actionName:'view'
         },
     });
